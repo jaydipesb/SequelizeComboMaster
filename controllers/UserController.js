@@ -10,7 +10,6 @@ const addUser = async (req, res) => {
   const t = await sequelize.transaction();
 
   try {
-    // add many to many relationship data
     let postDetail = req.body.option;
     const user = await Select.create(
       {
@@ -23,7 +22,6 @@ const addUser = async (req, res) => {
 
     await t.commit();
     res.status(200).send(user);
-    // });
   } catch (error) {
     console.log(error);
     await t.rollback();
